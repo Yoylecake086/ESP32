@@ -1,9 +1,19 @@
 #include <Arduino.h>
 #include "BluetoothSerial.h"
 #include "esp_bt_device.h"
+
+BluetoothSerial SerialBT;
+
 void setup() {
   // put your setup code here, to run once:
-
+Serial.begin(115200);
+if(SerialBT.begin("sclugabungus")){
+  Serial.println("uhmm an oopsie occured while starting :p");
+}else{
+  Serial.println("Blututh started :)");
+}
+printDeviceAddress();
+SerialBT.register_callback(callback);
 }
 
 void loop() {
@@ -24,6 +34,13 @@ void printDeviceAddress() {
     }else{
       Serial.print("\n");
     }
+    }
+  }
+
+
+  void callback(esp_spp_cb_event_t event, esp_spp_cb_param_t *param) {
+    if(event == ESP_SPP_SRV_OPEN_EVT){
+      Serial.println("the blututh divice wwas connected sucesfuly :)");
     }
   }
   /*
