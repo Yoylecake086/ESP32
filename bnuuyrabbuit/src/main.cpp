@@ -2,16 +2,17 @@
 #include "BluetoothSerial.h"
 #include "esp_bt_device.h"
 #define BTN_1 4
-#define BTN_1 12
-#define BTN_1 13
-#define BTN_1 14
-#define BTN_1 27
-#define BTN_1 32
-#define BTN_1 33
-BluetoothSerial SerialBT;
+#define BTN_2 12
+#define BTN_3 13
+#define BTN_4 14
+#define BTN_5 27
+#define BTN_6 32
+#define BTN_7 33
 #define threshold 40
+BluetoothSerial SerialBT;
 
-volatile u_int64_t time = 0;
+
+volatile unsigned long startTime = 0;
 
 
 volatile uint32_t button_time1 = 0;
